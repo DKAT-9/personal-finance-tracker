@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Finance Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Finance Tracker</h1>
+        <h2>Balance: ${{ "%.2f"|format(balance) }}</h2>
+        <p>Income: ${{ "%.2f"|format(total_income) }} | Expense: ${{ "%.2f"|format(total_expense) }}</p>
+        <a href="{{ url_for('add_transaction') }}">Add Transaction</a>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Date</th>
+            </tr>
+            {% for t in transactions %}
+            <tr class="{{ 'income' if t[3]=='income' else 'expense' }}">
+                <td>{{ t[1] }}</td>
+                <td>${{ "%.2f"|format(t[2]) }}</td>
+                <td>{{ t[3] }}</td>
+                <td>{{ t[4] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
