@@ -9,7 +9,7 @@ load_dotenv()
 app = Flask(__name__)
 DB_NAME = "database.db"
 
-# ✅ Initialize the database immediately (Flask 3+ compatible)
+# Initialize the database immediately (Flask 3+ compatible)
 with app.app_context():
     init_db(DB_NAME)
 
