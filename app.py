@@ -45,6 +45,5 @@ def add_transaction():
         return redirect(url_for('index'))
 
     return render_template('add_transaction.html')
-
 if __name__ == '__main__':
     app.run(debug=True)
