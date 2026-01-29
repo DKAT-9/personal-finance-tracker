@@ -32,6 +32,8 @@ def index():
 def add_transaction():
     if request.method == 'POST':
         name = request.form['name']
+        if not name:
+            return "Missing 'name' field in form", 400
         amount = float(request.form['amount'])
         t_type = request.form['type']
         date = request.form['date']
